@@ -73,6 +73,19 @@ Yarn
   yarn dev
 ```
 
+## Setup Environment Variables
+
+### Create file `.env.local` on root directory and use firebase project configuration
+```bash
+  VITE_API_KEY=""
+  VITE_AUTH_DOMAIN=""
+  VITE_DATABASE_URL=""
+  VITE_PROJECT_ID=""
+  VITE_STORAGE_BUCKET=""
+  VITE_MESSAGING_SENDER_ID=""
+  VITE_APP_ID=""
+```
+
 ## 🌎 License
 
 This project is under the MIT license. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for more details.

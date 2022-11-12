@@ -1,0 +1,19 @@
+@import './_colorsVariables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $white-200;
+  color: $gray-900;
+}
+
+body,
+input,
+button,
+textarea {
+  font: $roboto-400;
+}

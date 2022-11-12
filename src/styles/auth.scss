@@ -1,0 +1,143 @@
+@import './_colorsVariables.scss';
+
+#page-auth {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+
+  aside {
+    flex: 7;
+    background: $purple-500;
+    color: $white-100;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 80px;
+
+    img {
+      max-width: 320px;
+    }
+
+    strong {
+      font: $poppins-700;
+      line-height: 42px;
+      margin-top: 16px;
+
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 16px;
+      color: $white-200;
+    }
+  }
+}
+
+main {
+  flex: 8;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  align-items: stretch;
+  text-align: center;
+
+
+  >img {
+    align-self: center;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin: 64px 0 24px;
+    font-family: $poppins;
+  }
+
+  form {
+    input {
+      height: 50px;
+      border-radius: 8px;
+      padding: 0 16px;
+      background: $white-100;
+      border: 1px solid $gray-300;
+      outline: none;
+    }
+
+    button {
+      margin-top: 16px;
+      outline: none;
+    }
+
+    button,
+    input {
+      width: 100%;
+      outline: none;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    color: $gray-500;
+    margin-top: 16px;
+  }
+
+  a {
+    color: $pink-500;
+  }
+}
+
+.create-room {
+  margin-top: 64px;
+  height: 50px;
+  border-radius: 8px;
+  font-weight: 500;
+  background: $red-500;
+  color: $white-100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 0;
+  transition: filter 0.2s;
+  outline: none;
+
+  img {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.separator {
+  font-size: 14px;
+  margin: 32px 0;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    margin-right: 16px;
+    background: $gray-300;
+  }
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    margin-left: 16px;
+    background: $gray-300;
+  }
+}

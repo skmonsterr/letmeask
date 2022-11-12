@@ -40,7 +40,7 @@
 ### Clone the project
 
 ```bash
-  git clone https://github.com/skmonsterr/letmeask
+  git clone https://github.com/skmonsterr/letmeask.git
 ```
 
 ### Enter the project directory

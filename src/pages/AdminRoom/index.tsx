@@ -20,17 +20,24 @@ export function AdminRoom() {
   const { questions, title } = useRoom(roomId);
 
 
+  /* 
+  FIXME: this should use React Modal
+  TODO: Change confirm js message to react modal - https://github.com/reactjs/react-modal and use react hot toast https://react-hot-toast.com/
+  */
   async function handleEndRoom() {
-    await update(ref(database, `rooms/${roomId}`), {
-      endedAt: new Date(),
-    })
-    navigateTo('/')
+    if (confirm('Tem certeza que deseja excluir esta sala?')) {
+      await update(ref(database, `rooms/${roomId}`), {
+        endedAt: new Date(),
+      })
+      navigateTo('/')
+    }
+    return;
   }
 
 
   /* 
   FIXME: this should use React Modal
-  TODO: Change confirm js message to react modal - https://github.com/reactjs/react-modal and use react hot toas https://react-hot-toast.com/
+  TODO: Change confirm js message to react modal - https://github.com/reactjs/react-modal and use react hot toast https://react-hot-toast.com/
   */
   async function handleDeleteQuestion(questionId: string) {
     if (confirm('Tem certeza que deseja excluir esta pergunta?')) {

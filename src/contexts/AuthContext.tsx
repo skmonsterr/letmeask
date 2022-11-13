@@ -22,6 +22,10 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
   const [user, setUser] = useState<User>();
 
+  /* 
+FIXME: this should use React Hot Toast for errors
+TODO: Change error message to react hot toast https://react-hot-toast.com/
+*/
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {

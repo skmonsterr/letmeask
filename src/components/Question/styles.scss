@@ -1,0 +1,68 @@
+@import '../../styles/_colorsVariables.scss';
+
+.question {
+  background: $white-300;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px $opacity-004;
+  padding: 24px;
+
+  &+.question {
+    margin-top: 8px;
+  }
+
+  p {
+    color: $gray-900;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+
+
+    .user-info {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+
+      span {
+        margin-left: 8px;
+        color: $gray-500;
+        font-size: 14px;
+      }
+    }
+
+    button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      transition: filter 0.2s;
+
+      &.like-button {
+        display: flex;
+        align-items: flex-end;
+        color: $gray-500;
+        gap: 8px;
+
+
+        &.liked {
+          color: $purple-500;
+
+          svg path {
+            stroke: $purple-500;
+          }
+        }
+      }
+
+      &:hover {
+        color: brightness(0.7);
+      }
+    }
+  }
+}

@@ -6,7 +6,17 @@ import {
   signInWithPopup,
   onAuthStateChanged,
 } from 'firebase/auth'
-import { getDatabase } from 'firebase/database'
+import {
+  getDatabase,
+  push,
+  remove,
+  ref,
+  get,
+  onValue,
+  off,
+  update
+
+} from 'firebase/database'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -20,12 +30,20 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const database = getDatabase();
+const database = getDatabase(app);
 
 export {
   auth,
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
-  database
+  database,
+  getDatabase,
+  ref,
+  get,
+  push,
+  remove,
+  onValue,
+  off,
+  update
 }

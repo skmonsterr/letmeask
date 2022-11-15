@@ -12,6 +12,9 @@ dist
 build
 dist-ssr
 *.local
+.firebaserc
+firebase.json
+database.rules.json
 
 # Editor directories and files
 .vscode/*

@@ -1,11 +1,13 @@
 import { database, ref, push, remove, update } from '../../services/firebase'
-import { useParams, useNavigate } from 'react-router-dom';
-import { useRoom } from '../../hooks/useRoom';
+import { useParams, useNavigate } from 'react-router-dom'
+import { useRoom } from '../../hooks/useRoom'
 import logoImg from '../../assets/logo.svg'
-import deleteImg from '../../assets/delete.svg';
+import checkImg from '../../assets/check.svg'
+import answerImg from '../../assets/answer.svg'
+import deleteImg from '../../assets/delete.svg'
 import { Button } from '../../components/Button'
-import { RoomCode } from '../../components/RoomCode';
-import { Question } from '../../components/Question';
+import { RoomCode } from '../../components/RoomCode'
+import { Question } from '../../components/Question'
 import '../AdminRoom/styles.scss'
 
 type RoomParams = {
@@ -46,6 +48,25 @@ export function AdminRoom() {
     }
   }
 
+  /* 
+    FIXME: this should use React Modal
+    TODO: Change confirm js message to react modal - https://github.com/reactjs/react-modal and use react hot toast https://react-hot-toast.com/
+    */
+  async function handleCheckQuestionAsAnswered(questionId: string) {
+    if (confirm('Tem certeza que deseja marcar pergunta como respondida?')) {
+      await update(ref(database, `rooms/${roomId}/questions/${questionId}`), {
+        isAnswered: true,
+      });
+    }
+
+  }
+
+  async function handleHighlightQuestion(questionId: string) {
+    await update(ref(database, `rooms/${roomId}/questions/${questionId}`), {
+      isHighlighted: true,
+    });
+  }
+
   return (
     <div id="page-room">
       <header>
@@ -78,7 +99,25 @@ export function AdminRoom() {
                 key={question.id}
                 content={question.content}
                 author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type='button'
+                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                    >
+                      <img src={checkImg} alt="Marcar pergunta como respondida" />
+                    </button>
+                    <button
+                      type='button'
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img src={answerImg} alt="Dar destaque à pergunta" />
+                    </button>
+                  </>
+                )}
                 <button
                   type='button'
                   onClick={() => handleDeleteQuestion(question.id)}

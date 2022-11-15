@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import { database, ref, onValue, off } from '../services/firebase'
-import { useAuth } from "./useAuth";
+import { useAuth } from "./useAuth"
 
 type FirebaseQuestions = Record<string, {
   author: {
@@ -9,7 +9,7 @@ type FirebaseQuestions = Record<string, {
   }
   content: string;
   isAnswered: boolean;
-  isHighLighted: boolean;
+  isHighlighted: boolean;
   likes: Record<string, {
     authorId: string;
   }>
@@ -23,19 +23,19 @@ type QuestionType = {
   }
   content: string;
   isAnswered: boolean;
-  isHighLighted: boolean;
+  isHighlighted: boolean;
   likeCount: number;
   likeId: string | undefined;
 }
 
 
 export function useRoom(roomId: string) {
-  const { user } = useAuth()
+  const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [title, setTitle] = useState('');
 
   useEffect(() => {
-    const roomRef = ref(database, `rooms/${roomId}`)
+    const roomRef = ref(database, `rooms/${roomId}`);
 
     /* 
     FIXME: this should perform better
@@ -50,7 +50,7 @@ export function useRoom(roomId: string) {
           content: value.content,
           author: value.author,
           isAnswered: value.isAnswered,
-          isHighLighted: value.isHighLighted,
+          isHighlighted: value.isHighlighted,
           likeCount: Object.values(value.likes ?? {}).length,
           likeId: Object.entries(value.likes ?? {}).find(([key, like]) => like.authorId === user?.id)?.[0],
         }
@@ -61,10 +61,9 @@ export function useRoom(roomId: string) {
     })
 
     return () => {
-      off(roomRef)
+      off(roomRef);
     }
-  }, [roomId, user?.id])
+  }, [roomId, user?.id]);
 
   return { questions, title }
-
 }

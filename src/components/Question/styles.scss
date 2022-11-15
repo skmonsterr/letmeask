@@ -10,6 +10,19 @@
     margin-top: 8px;
   }
 
+  &.highlighted {
+    background: $white-400;
+    border: 1px solid $purple-500;
+
+    footer .user-info span {
+      color: $gray-900;
+    }
+  }
+
+  &.answered {
+    background: $gray-200;
+  }
+
   p {
     color: $gray-900;
   }
@@ -36,6 +49,11 @@
         color: $gray-500;
         font-size: 14px;
       }
+    }
+
+    >div {
+      display: flex;
+      gap: 16px;
     }
 
     button {
